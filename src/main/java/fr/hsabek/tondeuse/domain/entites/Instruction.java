@@ -6,12 +6,40 @@ public class Instruction {
     private int x;
     private int y;
     private char codeOrientation;
-    private char codeInstruction;
+    private String codeInstruction;
+    private int xmax;
+    private int ymax ;
 
-    public Instruction(int x, int y, char codeOrientation, char codeInstruction) {
+    public Instruction(int x, int y, char codeOrientation, String codeInstruction, int xmax, int ymax) {
         this.x = x;
         this.y = y;
         this.codeOrientation = codeOrientation;
+        this.codeInstruction = codeInstruction;
+        this.xmax = xmax;
+        this.ymax = ymax;
+    }
+
+    public int getXmax() {
+        return xmax;
+    }
+
+    public void setXmax(int xmax) {
+        this.xmax = xmax;
+    }
+
+    public int getYmax() {
+        return ymax;
+    }
+
+    public void setYmax(int ymax) {
+        this.ymax = ymax;
+    }
+
+    public String getCodeInstruction() {
+        return codeInstruction;
+    }
+
+    public void setCodeInstruction(String codeInstruction) {
         this.codeInstruction = codeInstruction;
     }
 
@@ -42,11 +70,5 @@ public class Instruction {
         this.codeOrientation = codeOrientation;
     }
 
-    public char getCodeInstruction() {
-        return codeInstruction;
-    }
 
-    public void setCodeInstruction(char codeInstruction) {
-        this.codeInstruction = codeInstruction;
-    }
 }

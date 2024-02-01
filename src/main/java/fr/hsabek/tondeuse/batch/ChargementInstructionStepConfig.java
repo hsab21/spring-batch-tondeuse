@@ -22,10 +22,9 @@ public class ChargementInstructionStepConfig {
             return new FlatFileItemReaderBuilder<Instruction>()
                     .name("InstructionItemReader")
                     .resource(inputFile)
-                    .fixedLength()
-                    .columns(new Range[] { new Range(1, 1), new Range(3, 3), new Range(5,
-                            5), new Range(7, 7) })
-                    .names(new String[]{"x","y","codeOrientation","codeInstruction"})
+                    .delimited()
+                    .delimiter(" ")
+                    .names(new String[]{"xmax","ymax","x","y","codeOrientation","codeInstruction"})
                     .targetType(Instruction.class)
                     .build();
         }
@@ -38,7 +37,7 @@ public class ChargementInstructionStepConfig {
         @Bean
         public Step chargementInstructionStep(final StepBuilderFactory builderFactory){
             return builderFactory.get("chargementInstructionStep")
-                    .<Instruction, Instruction>chunk(2)
+                    .<Instruction, Instruction>chunk(1)
                     .reader(instructionItemReader(null))
                     .writer(instructionItemWriter())
                     .build();
